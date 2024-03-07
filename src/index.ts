@@ -1,4 +1,4 @@
 import { Test } from './test';
 
 console.log('Hello world!');
-console.log(Test(5, 5));
+console.log(Test(10, 5));
