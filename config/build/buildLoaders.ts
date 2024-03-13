@@ -1,11 +1,13 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
+import { removeAttrsBabelPlugin } from '../../babel/removeAttrsBabelPlugin';
 
 import type { ModuleOptions } from 'webpack';
 import type { BuildOptions } from './buildTypes';
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   const isDev = options.mode === 'development';
+  const isProd = options.mode === 'production';
 
   const scssLoaderWithModules = {
     loader: 'css-loader',
@@ -93,9 +95,19 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
           '@babel/preset-typescript',
           ['@babel/preset-react', { runtime: isDev ? 'automatic' : 'classic' }],
         ],
+        // наш кастомный плагин
+        plugins: [
+          isProd && [removeAttrsBabelPlugin, { props: ['data-testid'] }],
+        ].filter(Boolean),
       },
     },
   };
 
-  return [svgLoader, assetLoader, scssLoader, tsLoader];
+  return [
+    svgLoader,
+    assetLoader,
+    scssLoader,
+    babelLoader,
+    //tsLoader
+  ];
 }

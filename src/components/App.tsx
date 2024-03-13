@@ -32,12 +32,12 @@ export function App() {
         <Eye width={'70px'} height={'70px'} style={{ color: 'red' }} />
       </div>
       {__ENV__ === 'development' && <div>Only dev element!</div>}
-      <div className={styles.nav}>
+      <div data-testid={'App.Links'} className={styles.nav}>
         <Link to={'/about'}>About</Link>
         <Link to={'/shop'}>Shop</Link>
         <Link to={'/'}>Home</Link>
       </div>
-      <div className={styles.elements}>
+      <div data-testid={'App.Increase'} className={styles.elements}>
         <button className={styles.elements__btn_inc} onClick={incCount}>
           INCREASE
         </button>
