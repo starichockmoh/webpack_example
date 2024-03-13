@@ -1,0 +1,23 @@
+.elements {
+  display: flex;
+  gap: 10px;
+
+  &__btn_inc {
+    width: 100px;
+    padding: 10px;
+    background: #dddd00;
+  }
+
+  &__btn_zero {
+    background: red;
+    width: 100px;
+  }
+}
+
+.nav {
+  margin-bottom: 20px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+
+}

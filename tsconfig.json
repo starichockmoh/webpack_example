@@ -4,7 +4,7 @@
     "noImplicitAny": true,
     "module": "ESNext",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
     // Если какая-либо библиотека не имеет default import,
@@ -21,7 +21,12 @@
     // console.log(Moment);
     // c флагом результат [object Object]
     // console.log(Moment);
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      // настройка алиасов
+      "@/*": ["./src/*"]
+    }
   },
   "ts-node": {
     "compilerOptions": {
